@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Clock</title>
+		<style type="text/css">
+			canvas
+			{
+				margin: 100px 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="clock" width="500" height="500">
+			please upgrade your browser...
+		</canvas>
+		<script type="text/javascript">
+
+			function setTime()
+			{
+				var canvas = document.getElementById('clock');
+				context = canvas.getContext("2d");
+				clockRadious = canvas.width / 2;
+
+				context.fillStyle = "black";
+				context.beginPath();
+				context.arc(clockRadious, clockRadious, clockRadious, 0, 2 * Math.PI);
+				context.fill();
+
+				context.fillStyle = "white";
+				context.beginPath();
+				context.arc(clockRadious, clockRadious, 10, 0, 2 * Math.PI);
+				context.fill();
+
+				context.font = clockRadious / 10 +"px Arial";
+				context.fillStyle = "white";
+				context.textAlign = "center";
+				context.textBaseLine = "middle";
+				for(var i = 1; i <= 12; i++)
+				{
+					context.fillText(i, clockRadious + clockRadious * 0.9 * Math.sin(i * 2 * Math.PI / 12), (clockRadious - (clockRadious * 0.9 * Math.cos(i * 2 * Math.PI / 12))));
+				}
+				var date = new Date();
+				var hours = date.getHours();
+				var minutes = date.getMinutes();
+				var seconds = date.getSeconds();
+
+				var fullHours = hours % 12 + minutes / 60 + seconds / 360;
+				var fullMinutes = minutes + seconds / 60;
+
+				var hoursAngle = fullHours * 2 * Math.PI / 12;
+				var minutesAngle = fullMinutes * 2 * Math.PI / 60;
+				var secondsAngle = seconds * 2 * Math.PI / 60;
+
+				context.strokeStyle = "green";
+				context.moveTo(clockRadious, clockRadious);
+				context.lineTo(clockRadious + (clockRadious * 0.7 * Math.sin(hoursAngle)), clockRadious - (clockRadious * 0.7 * Math.cos(hoursAngle)));
+				context.lineWidth = 4;
+				context.stroke();
+
+				context.moveTo(clockRadious, clockRadious);
+				context.lineTo(clockRadious + (clockRadious * 0.8 * Math.sin(minutesAngle)), clockRadious - (clockRadious * 0.8 * Math.cos(minutesAngle)));
+				context.lineWidth = 3;
+				context.stroke();
+
+				context.moveTo(clockRadious, clockRadious);
+				context.lineTo(clockRadious + (clockRadious * 0.9 * Math.sin(secondsAngle)), clockRadious - (clockRadious * 0.9 * Math.cos(secondsAngle)));
+				context.lineWidth = 2;
+				context.stroke();
+			}
+			setInterval(setTime, 1000);
+		</script>
+	</body>
+</html>

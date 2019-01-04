@@ -59,6 +59,11 @@ error =
     help: "go to valid page"
 }
 
+app.get("/clock", (request, response) =>
+{
+    response.sendFile(__dirname +"/views/partials/watch.html");
+});
+
 app.get("/about", (request, response) =>
 {
     response.render("home.hbs",
