@@ -8,11 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
+    <style>
+        div
+        {
+            width: 100px;
+            height: 10px;
+            background-color: rgb(64, 64, 64);
+        }
+    </style>
 </head>
 
 <body>
    {{>header}}
     <p> {{toUpperCase pageContent}} </p>
+    <div></div>
     {{> footer}}
 </body>
 
