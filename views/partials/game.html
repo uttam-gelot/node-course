@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Reaction game!</title>
+		<link rel="icon" type="image/ico" href="icon.png" />
+		<style type="text/css">
+			#shape
+			{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				display: none;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<h1 align="center"> Your Time : <span id="timeTaken"></span></h1>
+		<h1 align="center"> Best Time : <span id="bestTime"></span></h1>
+		<div id="shape"></div>
+		<script type="text/javascript">
+			var startTime = new Date().getTime();
+			var shape = document.getElementById("shape");
+
+			var bestTime = 10000;
+
+			shape.onclick = function()
+			{
+				shape.style.display = "none";
+				var endTime = new Date().getTime();
+				var timeTaken = endTime - startTime;
+				document.getElementById("body").style.backgroundColor = randomColor();
+				// alert(timeTaken / 1000);
+				document.getElementById("timeTaken").innerHTML = timeTaken / 1000 +" sec";
+				if(timeTaken < bestTime)
+				{
+					document.getElementById("bestTime").innerHTML = timeTaken / 1000 +" sec";
+					bestTime = timeTaken;
+				}
+				else
+				{
+					document.getElementById("bestTime").innerHTML = bestTime / 1000 +" sec";
+				}
+
+				setTimeout(makeShapAppear, Math.random() * 2000);
+			}
+			function makeShapAppear() 
+			{
+				shape.style.display = "block";
+				var randomHeight = Math.random() * (200) + 50;
+				shape.style.top = Math.random() * 450 +"px";
+				shape.style.left = Math.random() * 500 +"px";
+				shape.style.width = randomHeight +"px";
+				shape.style.height = randomHeight +"px";
+				shape.style.backgroundColor = randomColor();
+				shape.style.borderRadius = Math.random() * 101 +"%";
+				startTime = new Date().getTime();
+			}
+			setTimeout(makeShapAppear, Math.random() * 2000);
+			function randomColor() 
+			{
+				var color = "#";
+				var letters = "0123456789ABCDEF".split('');
+				for(var i = 0; i < 6; i++)
+				{
+					color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}
+		</script>
+	</body>
+</html>

@@ -1,7 +1,7 @@
 const express = require("express");
 const hbs = require("hbs");
 const fs = require("fs");
-const port = process.env.PORT || 5555;
+const port = process.env.PORT || 4444;
 
 var app = express();
 
@@ -36,9 +36,9 @@ app.get("/", (request, response) =>
 {
     response.render("home.hbs",
     {
-        pageTitle: "Home Page",
-        pageContent: "This is Home Page...",
-        pageHeader: "Home Page.!",
+        pageTitle: "Home",
+        pageContent: "...................",
+        pageHeader: "Welcome to Home...",
     });
     // response.send("<h1>hello express...!</h1>");
     // response.send(
@@ -64,13 +64,17 @@ app.get("/clock", (request, response) =>
     response.sendFile(__dirname +"/views/partials/watch.html");
 });
 
+app.get("/game", (requst, response) =>
+{
+    response.sendFile(__dirname +"/views/partials/game.html");
+});
 app.get("/about", (request, response) =>
 {
     response.render("home.hbs",
     {
-        pageTitle: "About Page",
-        pageContent: "this is about page...",
-        pageHeader: "About Page.!"
+        pageTitle: "About Me..!",
+        pageContent: "...............",
+        pageHeader: "About Me..!"
     });
 });
 app.get("/bad", (request, response) =>
