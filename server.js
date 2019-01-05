@@ -61,21 +61,17 @@ error =
 
 app.get("/clock", (request, response) =>
 {
-    response.sendFile(__dirname +"/views/partials/watch.html");
+    response.sendFile(__dirname +"/views/partials/clock.html");
 });
 
 app.get("/game", (requst, response) =>
 {
     response.sendFile(__dirname +"/views/partials/game.html");
 });
+var aboutMe = "";
 app.get("/about", (request, response) =>
 {
-    response.render("home.hbs",
-    {
-        pageTitle: "About Me..!",
-        pageContent: "...............",
-        pageHeader: "About Me..!"
-    });
+    response.render(__dirname+"/views/about.hbs");
 });
 app.get("/bad", (request, response) =>
 {

@@ -18,16 +18,27 @@
         <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 
         <style>
+            p
+            {
+                font-size: 20px;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                margin: 50px;
+            }
         </style>
     </head>
     <body>
         {{>header}}
         <div class="container">
-            <h1>{{pageHeader}}</h1>
+            {{!-- <h1>{{pageHeader}}</h1> --}}
             {{!-- {{toUpperCase pageContent}} --}}
-            {{pageContent}}
-            {{> footer}}
+            {{!-- {{pageContent}} --}}
+            <p>
+                Welcome to my website, where you'll find a <br>wealth of information in<br> the form of newsletter<br> articles, and
+                research reports.
+            </p>
         </div>
+        {{> footer}}
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
